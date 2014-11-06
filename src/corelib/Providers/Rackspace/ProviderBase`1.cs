@@ -698,6 +698,7 @@ namespace net.openstack.Providers.Rackspace
             IEnumerable<Tuple<ServiceCatalog, Endpoint>> endpoints =
                 services.SelectMany(service => service.Endpoints.Select(endpoint => Tuple.Create(service, endpoint)));
 
+#if RACKSAPCE_CLOUD
             string effectiveRegion = region;
             if (string.IsNullOrEmpty(effectiveRegion))
             {
@@ -715,9 +716,10 @@ namespace net.openstack.Providers.Rackspace
             else
                 endpoints = endpoints.Where(i => string.IsNullOrEmpty(i.Item2.Region));
 
-            if (effectiveRegion == null && !endpoints.Any())
+            if (effectiveRegion == null && endpoints.Any())
                 throw new NoDefaultRegionSetException("No region was provided, the service does not provide a region-independent endpoint, and there is no default region set for the user's account.");
-
+#else
+#endif
             Tuple<ServiceCatalog, Endpoint> serviceEndpoint = endpoints.FirstOrDefault();
             if (serviceEndpoint == null)
                 throw new UserAuthorizationException("The user does not have access to the requested service or region.");
@@ -755,7 +757,7 @@ namespace net.openstack.Providers.Rackspace
         {
             var endpoint = GetServiceEndpoint(identity, serviceType, serviceName, region);
 
-            return endpoint.PublicURL;
+            return endpoint.PublicURL.Replace("192.168.8.15", "221.12.27.202");
         }
 
         /// <summary>

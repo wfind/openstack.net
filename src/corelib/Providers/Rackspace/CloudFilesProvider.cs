@@ -1836,7 +1836,7 @@ namespace net.openstack.Providers.Rackspace
         /// <exception cref="ResponseException">If the REST API request failed.</exception>
         protected string GetServiceEndpointCloudFiles(CloudIdentity identity, string region = null, bool useInternalUrl = false)
         {
-            return useInternalUrl ? base.GetInternalServiceEndpoint(identity, "object-store", "cloudFiles", region) : base.GetPublicServiceEndpoint(identity, "object-store", "cloudFiles", region);
+            return useInternalUrl ? base.GetInternalServiceEndpoint(identity, "object-store", "swift", region) : base.GetPublicServiceEndpoint(identity, "object-store", "swift", region);
         }
 
         /// <summary>

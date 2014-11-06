@@ -36,10 +36,10 @@
     <DocumentationFile>bin\v4.0\Release\openstacknet.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\..\keys\openstacknetsdk.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\..\keys\openstacknet.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -631,10 +631,8 @@
     <Compile Include="Providers\Rackspace\WebResponseEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\keys\openstacknetsdk.snk">
-      <Link>openstacknetsdk.snk</Link>
-    </None>
     <None Include="corelib.nuspec" />
+    <None Include="..\..\..\keys\openstacknet.snk" />
     <None Include="packages.corelib.v4.0.config" />
   </ItemGroup>
   <ItemGroup>
